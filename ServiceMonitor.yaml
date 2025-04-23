@@ -1,0 +1,14 @@
+# Criando um ServiceMonitor (para quem usa Prometheus Operator)
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: fastapi-metrics
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: fastapi-metrics
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 15s
