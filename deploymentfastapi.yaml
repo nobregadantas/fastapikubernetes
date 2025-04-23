@@ -1,0 +1,20 @@
+ #Criando um Deployment no Kubernetes
+ apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-metrics
+  template:
+    metadata:
+      labels:
+        app: fastapi-metrics
+    spec:
+      containers:
+      - name: fastapi-metrics
+        image: meu-repo/fastapi-metrics:latest
+        ports:
+        - containerPort: 8000
